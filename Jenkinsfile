@@ -10,6 +10,7 @@ pipeline {
                 deleteDir()
             }
         }
+        
         stage("Clone repo") {
             steps {
                 script {
@@ -21,9 +22,10 @@ pipeline {
                 }
             }
         }
+        
         stage("Generate backend image") {
             steps {
-                dir("backend") {
+                dir("backend-master") {
                     script {
                         if (isUnix()) {
                             sh 'mvn clean install'
@@ -36,9 +38,10 @@ pipeline {
                 }
             }
         }
+        
         stage("Run backend compose") {
             steps {
-                dir("backend") {
+                dir("backend-master") {
                     sh 'docker-compose up -d'
                 }
             }
