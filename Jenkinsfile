@@ -13,7 +13,13 @@ pipeline {
         
         stage("Clone repo") {
             steps {
-                sh 'git clone https://github.com/SassiMotaz/backend-master'
+                script {
+                    if (isUnix()) {
+                        sh 'git clone https://github.com/SassiMotaz/backend-master.git'
+                    } else {
+                        bat 'git clone https://github.com/SassiMotaz/backend-master.git'
+                    }
+                }
             }
         }
         
