@@ -8,12 +8,15 @@ pipeline {
         stage("Clean up") {
             steps {
                 deleteDir()
-        }
-        satge("Clone repo") {
+            } // Fermer cette accolade pour `steps`
+        } // Fermer cette accolade pour `stage`
+        
+        stage("Clone repo") {
             steps {
                 sh 'git clone https://github.com/SassiMotaz/backend-master.git'
             }
         }
+        
         stage("Generate backend image") {
             steps {
                 dir("backend-master") {
@@ -22,6 +25,7 @@ pipeline {
                 }
             }
         }
+        
         stage("Run backend compose") {
             steps {
                 dir("backend-master") {
@@ -29,6 +33,5 @@ pipeline {
                 }
             }
         }
-    }
-}
- 
+    } // Fermer cette accolade pour `stages`
+} // Fermer cette accolade pour `pipeline`
