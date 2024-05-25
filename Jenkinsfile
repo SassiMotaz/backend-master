@@ -41,7 +41,7 @@ pipeline {
         
         stage("Run backend compose") {
             steps {
-                dir("backend-master") {
+                dir("backend") {
                     sh 'docker-compose up -d'
                 }
             }
