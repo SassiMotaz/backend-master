@@ -1,15 +1,15 @@
 pipeline {
     agent any
     tools {
-        maven 'maven'
+        maven 'maven_3_9_6' // Utiliser le nom correct de l'installation Maven
     }
     
     stages {
         stage("Clean up") {
             steps {
                 deleteDir()
-            } // Fermer cette accolade pour `steps`
-        } // Fermer cette accolade pour `stage`
+            }
+        }
         
         stage("Clone repo") {
             steps {
@@ -33,5 +33,5 @@ pipeline {
                 }
             }
         }
-    } // Fermer cette accolade pour `stages`
-} // Fermer cette accolade pour `pipeline`
+    }
+}
