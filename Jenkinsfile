@@ -13,7 +13,7 @@ pipeline {
         
         stage("Clone repo") {
             steps {
-                sh 'git clone https://github.com/SassiMotaz/backend-master.git'
+                sh 'git clone https://github.com/SassiMotaz/backend-master'
             }
         }
         
