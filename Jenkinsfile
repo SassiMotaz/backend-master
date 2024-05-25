@@ -26,8 +26,15 @@ pipeline {
         stage("Generate backend image") {
             steps {
                 dir("backend-master") {
-                    sh 'mvn clean install'
-                    sh 'docker build -t backend .'
+                    script {
+                        if (isUnix()) {
+                            sh 'mvn clean install'
+                            sh 'docker build -t backend .'
+                        } else {
+                            bat 'mvn clean install'
+                            bat 'docker build -t backend .'
+                        }
+                    }
                 }
             }
         }
